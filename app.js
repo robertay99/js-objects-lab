@@ -43,6 +43,7 @@ Solve Exercise 4 here:
 
 const starterPokemon = pokemon.filter((poke) => poke.starter === true);
 game.party.push(...starterPokemon);
+// console.log(game.party)
 
 /*
 Exercise 5
@@ -92,14 +93,16 @@ function evolveStarters(party, allPokemon) {
       if (poke.starter) {
         const evolvedNumber = poke.number + 1;
         
-        const evolvedPokemon = allPokemon.find(pokemon => pokemon.number === evolvedNumber);
+        const evolvedPokemon = allPokemon.find(pokemon => pokemon.number === evolvedNumber && pokemon.starter === true);
+        //  console.log(evolvedPokemon)
         
         if (evolvedPokemon) {
-          party.splice(index, 1, evolvedPokemon);
+            party.splice(index, 1, evolvedPokemon);
         }
       }
     });
   }
 
-  evolveStarters(game.party, pokemon)
+  (evolveStarters(game.party, pokemon))
 //   console.log(game.party)
+
