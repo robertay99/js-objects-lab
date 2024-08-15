@@ -1,21 +1,21 @@
 const game = {
-    party: [],
-    gyms: [
-      { location: "Pewter City", completed: false, difficulty: 1 },
-      { location: "Cerulean City", completed: false, difficulty: 2 },
-      { location: "Vermilion City", completed: false, difficulty: 3 },
-      { location: "Celadon City", completed: false, difficulty: 4 },
-      { location: "Fuchsia City", completed: false, difficulty: 5 },
-      { location: "Saffron City", completed: false, difficulty: 6 },
-      { location: "Cinnabar Island", completed: false, difficulty: 7 },
-      { location: "Viridian City", completed: false, difficulty: 8 },
-    ],
-    items: [
-      { name: "potion", quantity: 4 },
-      { name: "pokeball", quantity: 8 },
-      { name: "rare candy", quantity: 99 },
-    ],
-  }
+  party: [],
+  gyms: [
+    { location: "Pewter City", completed: false, difficulty: 1 },
+    { location: "Cerulean City", completed: false, difficulty: 2 },
+    { location: "Vermilion City", completed: false, difficulty: 3 },
+    { location: "Celadon City", completed: false, difficulty: 4 },
+    { location: "Fuchsia City", completed: false, difficulty: 5 },
+    { location: "Saffron City", completed: false, difficulty: 6 },
+    { location: "Cinnabar Island", completed: false, difficulty: 7 },
+    { location: "Viridian City", completed: false, difficulty: 8 },
+  ],
+  items: [
+    { name: "potion", quantity: 4 },
+    { name: "pokeball", quantity: 8 },
+    { name: "rare candy", quantity: 99 },
+  ],
+};
 
 // console.dir(pokemon, { maxArrayLength: null })
 // console.log(pokemon[59].name)
@@ -29,7 +29,7 @@ Exercise 3
 
 Solve Exercise 3 here:
 */
-game['difficulty'] = ['Easy', 'Med', 'Hard']
+game["difficulty"] = ["Easy", "Med", "Hard"];
 // console.log(game)
 
 /*
@@ -41,10 +41,8 @@ Exercise 4
 Solve Exercise 4 here:
 */
 
-const starterPokemon = pokemon.find((poke) => poke.starter === true)
-
-game.party.push(starterPokemon)
-
+const starterPokemon = pokemon.filter((poke) => poke.starter === true);
+game.party.push(...starterPokemon);
 
 /*
 Exercise 5
@@ -55,10 +53,9 @@ Exercise 5
 Solve Exercise 5 here:
 */
 
-const waterTypePokemon = pokemon.filter((poke) => poke.type === 'water' ) 
-const topThreeWaterType = waterTypePokemon.slice(0,3)
-// game.party.push(...topThreeWaterType)
-
+const waterTypePokemon = pokemon.filter((poke) => poke.type === "water");
+const topThreeWaterType = waterTypePokemon.slice(0, 3);
+game.party.push(...topThreeWaterType);
 
 /*
 Exercise 6
@@ -68,16 +65,41 @@ Exercise 6
 
 Solve Exercise 6 here:
 */
-const gymsBelowThree = game.gyms.forEach((gym) => {
-    if(gym.difficulty < 3) gym.completed = true
-})
-
+const trueForGymsBelowThree = game.gyms.forEach((gym) => {
+  if (gym.difficulty < 3) gym.completed = true;
+});
+trueForGymsBelowThree;
 // console.log(game.gyms.filter((gym) => gym.completed === true))
 
+/*
+Exercise 7
+1. Evolve the starter Pokémon you added to your party earlier. Each starter Pokémon evolves into a specific one.
+2. How would you replace the current starter Pokémon in your party with its evolved form?
 
+Hint: 
+  - Pokemon 1: Bulbasaur evolves into Pokemon 2: Ivysaur
+  - Pokemon 4: Charmander evolves into Pokemon 5: Charmeleon
+  - Pokemon 7: Squirtle evolves into Pokemon 8: Wartortle
+  - Pokemon 25: Pikachu evolves into Pokemon 26: Raichu
 
+More Hints: The existing starter Pokemon will be *replaced* in your party with the Pokemon it evolved into. 
+When working with an array of objects, the splice() array method is ideal for replacing one element with another. 
 
+Solve Exercise 7 here:
+*/
+function evolveStarters(party, allPokemon) {
+    party.forEach((poke, index) => {
+      if (poke.starter) {
+        const evolvedNumber = poke.number + 1;
+        
+        const evolvedPokemon = allPokemon.find(pokemon => pokemon.number === evolvedNumber);
+        
+        if (evolvedPokemon) {
+          party.splice(index, 1, evolvedPokemon);
+        }
+      }
+    });
+  }
 
-
-
-
+  evolveStarters(game.party, pokemon)
+//   console.log(game.party)
