@@ -60,6 +60,21 @@ const topThreeWaterType = waterTypePokemon.slice(0,3)
 // game.party.push(...topThreeWaterType)
 
 
+/*
+Exercise 6
+1. Set the `completed` property to true for gyms with a difficulty below 3.
+2. Think about how you'd loop through the `gyms` array to check and update the `completed` property.
+
+
+Solve Exercise 6 here:
+*/
+const gymsBelowThree = game.gyms.forEach((gym) => {
+    if(gym.difficulty < 3) gym.completed = true
+})
+
+// console.log(game.gyms.filter((gym) => gym.completed === true))
+
+
 
 
 
