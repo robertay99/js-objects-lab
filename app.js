@@ -106,3 +106,16 @@ function evolveStarters(party, allPokemon) {
   (evolveStarters(game.party, pokemon))
 //   console.log(game.party)
 
+/*
+Exercise 9
+1. Can you print out all the starter Pokémon from the `pokemon` array?
+2. Think about how you can identify a starter Pokémon and then log their names.
+
+
+Solve Exercise 9 here:
+*/
+const printStarterPokemon = pokemon.forEach((poke) => {
+    if(poke.starter == true) console.log(poke.name)
+})
+
+printStarterPokemon
