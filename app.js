@@ -240,4 +240,14 @@ const trueForGymsBelowEight = game.gyms.forEach((gym) => {
     if (gym.difficulty < 8) gym.completed = true;
   });
   trueForGymsBelowEight;
-  
+
+
+  /*
+Exercise 16
+1. Log the entire `game` object to the console. Take a moment to review the changes you've made throughout the exercises.
+
+
+Solve Exercise 16 here:
+*/
+
+console.log(game)
